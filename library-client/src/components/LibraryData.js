@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-
-
 class LibraryData extends Component {
     constructor(props, context) {
         super(props, context)
@@ -41,6 +39,7 @@ class LibraryData extends Component {
         const { data, deleteLibrary } = this.props
         if (this.state.editing) {
             return (
+                
                 <tr>
                     <td>{data.id}</td>
                     <td>
@@ -52,7 +51,7 @@ class LibraryData extends Component {
                         <input type="text" className="form-control" placeholder="Image" value={this.state.image} onChange={(e) => {
                             this.setState({ image: e.target.value}) }}>
                         </input>
-                        <img src={this.state.image} alt="gambar-buku"/>
+                        <img src={this.state.image} alt="gambar-buku" height="400px" />
                     </td>
                     <td>
                         <input type="text" className="form-control" placeholder="Writer" value={this.state.writer} onChange={(e) => {
@@ -68,8 +67,7 @@ class LibraryData extends Component {
                         <input type="text" className="form-control" placeholder="Location" value={this.state.location} onChange={(e) => {
                             this.setState({ location: e.target.value}) }}>
                         </input>
-                    </td>
-                    
+                    </td>                    
                     <td style={{ textAlign: 'center'}}>
                             <button type="submit" className="ui inverted segment primary button" onClick={this.handleSave.bind(this)}><i className="fas fa-save"></i>Save</button>
                             &nbsp;
@@ -81,11 +79,11 @@ class LibraryData extends Component {
             return (
                 <tr>
                     <td>{data.id}</td>
-                    <td>{data.title}</td>
-                    <td><img src={data.image} alt="gambar-buku" height="150px"/></td>
-                    <td>{data.writer}</td>
-                    <td>{data.category}</td>
-                    <td>{data.location}</td>
+                    <td><h3>{data.title}</h3></td>
+                    <td><img src={data.image} alt="gambar-buku" height="150px" /></td>
+                    <td><b>{data.writer}</b></td>
+                    <td><b>{data.category}</b></td>
+                    <td><b>{data.location}</b></td>
                     <td style={{ textAlign: 'center'}}>
                             <button type="submit" className="ui inverted segment teal button" onClick={() => { this.setState({ editing: true}) }}><i className="fas fa-edit"></i>Edit</button>
                             &nbsp;
@@ -94,7 +92,6 @@ class LibraryData extends Component {
                 </tr>
             )
         }
-        
     } 
 }
 

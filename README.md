@@ -27,7 +27,7 @@ $ npm start (client side)
 $ npm start (server side)
 ```
 
-## Demo
 
+## Demo
 
 ![home](/library-client/public/images/library.png)

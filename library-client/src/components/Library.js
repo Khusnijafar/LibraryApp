@@ -5,7 +5,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as LibraryActions from '../actions'
 
+
 class Library extends Component {
+   
     componentDidMount() {
         this.props.actions.loadLibrary()
     }

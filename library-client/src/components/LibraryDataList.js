@@ -105,7 +105,6 @@ export default class LibraryFormSearch extends Component {
                        
                         </form>
                     </div>
-
                 </div>
                 <div style={{ height: '10px'}}><br /></div>
                 <div className="card">
@@ -118,7 +117,6 @@ export default class LibraryFormSearch extends Component {
                             <th>Writer</th>
                             <th>Category</th>
                             <th>Location</th>
-                       
                             <th style={{ textAlign: 'center'}}>Action</th>
                         </tr>                            
                     </thead>

@@ -5,21 +5,14 @@ class LibraryData extends Component {
         super(props, context)
         this.state = {
             editing: false,
-            title: this.props.data.title || '',
-            image: this.props.data.image || '',
-            writer: this.props.data.writer || '',
-            category: this.props.data.category || '',
-            location: this.props.data.location || '',
-            activePage: 10,
+            title: this.props.data.title,
+            image: this.props.data.image,
+            writer: this.props.data.writer,
+            category: this.props.data.category,
+            location: this.props.data.location,
         }
         this.handleSave = this.handleSave.bind(this)
     }
-
-    handlePageChange(pageNumber) {
-        //console.log(`active page is ${pageNumber}`);
-        this.setState({activePage: pageNumber});
-      }
-
     handleSave() {
         let title = this.state.title.trim()
         let image = this.state.image.trim()
@@ -34,12 +27,10 @@ class LibraryData extends Component {
     }
 
     
-
     render() {
         const { data, deleteLibrary } = this.props
         if (this.state.editing) {
             return (
-                
                 <tr>
                     <td>{data.id}</td>
                     <td>

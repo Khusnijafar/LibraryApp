@@ -45,7 +45,6 @@ export function addLibrary(title, image, writer, category, location,) {
         dispatch(addData(id, title, image, writer, category, location,))
         return request
         .post(`${API_URL}`)
-        .type('form')
         .send({id})
         .send({title})
         .send({image})

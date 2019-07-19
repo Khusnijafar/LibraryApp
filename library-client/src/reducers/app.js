@@ -23,15 +23,15 @@ export default function data(state = [], action) {
 
         case types.ADD_LIBRARIES_SUCCESS:
         let addData = state
-        let add = addData.map(x => {
-            if (x.id === action.id) {
-                x.title = action.title
-                x.image = action.image
-                x.writer = action.writer
-                x.category = action.category
-                x.location = action.location
+        let add = addData.map(item => {
+            if (item.id === action.id) {
+                item.title = action.title
+                item.image = action.image
+                item.writer = action.writer
+                item.category = action.category
+                item.location = action.location
             }
-            return x
+            return item
         })
         return add
 
@@ -46,15 +46,15 @@ export default function data(state = [], action) {
 
         case types.EDIT_LIBRARIES_SUCCESS:
         let editData = state
-        let edit = editData.map(x => {
-            if (x.id === action.id) {
-                x.title = action.title
-                x.image = action.image
-                x.writer = action.writer
-                x.category = action.category
-                x.location = action.location
+        let edit = editData.map(item => {
+            if (item.id === action.id) {
+                item.title = action.title
+                item.image = action.image
+                item.writer = action.writer
+                item.category = action.category
+                item.location = action.location
             }
-            return x
+            return item
         })
         return edit
 

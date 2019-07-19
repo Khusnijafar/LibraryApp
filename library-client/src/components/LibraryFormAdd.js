@@ -5,11 +5,11 @@ export default class LibraryFormAdd extends Component {
         super(props, context)
         this.state = {
             adding: false,
-            title: this.props.title || '',
-            image: this.props.image || '',
-            writer: this.props.writer || '',
-            category: this.props.category || '',
-            location: this.props.location || '',
+            title: this.props.title,
+            image: this.props.image,
+            writer: this.props.writer,
+            category: this.props.category,
+            location: this.props.location,
         }
         this.handleButtonAdd = this.handleButtonAdd.bind(this)
         this.handleButtonCancel = this.handleButtonCancel.bind(this)

@@ -30,4 +30,4 @@ $ npm start (server side)
 
 ## Demo
 
-![home](/library-client/public/images/library.png)
+![home](/library-client/public/images/library-home.png)

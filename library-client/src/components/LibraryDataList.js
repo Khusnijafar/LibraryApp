@@ -34,7 +34,6 @@ export default class LibraryFormSearch extends Component {
         this.setState({ location: e.target.value})
     }
 
-   
     handleSubmit(e) {
         e.preventDefault()
     }
@@ -48,7 +47,7 @@ export default class LibraryFormSearch extends Component {
         var location = this.state.location.trim().toLowerCase()
        
         var filterData = data
-
+        console.log(filterData)
         if (title !== '' && writer !== '' && category !== '' && location !== '') {
             filterData = data.filter(item => item.title.toLowerCase().startsWith(title) && item.writer.toLowerCase().startsWith(writer)
             && item.category.toLowerCase().startsWith(category) && item.location.toLowerCase().startsWith(location))
@@ -61,7 +60,7 @@ export default class LibraryFormSearch extends Component {
         } else if (location !== '') {
             filterData = data.filter(item => item.location.toLowerCase().startsWith(location))
         }
-
+        console.log(data)
         let dataList = filterData.map((data) => {
             return (
                 <LibraryData 
@@ -75,7 +74,7 @@ export default class LibraryFormSearch extends Component {
         return (
             <div>
                 <div className="card">
-                    <div className="card-header"><i class="search icon"></i>Search Book</div>
+                    <div className="card-header"><i className="search icon"></i>Search Book</div>
                     <div className="card-body">
                         <form className="form-inline" onSubmit={this.handleSubmit}>
                             <div className="form-group">
@@ -128,5 +127,4 @@ export default class LibraryFormSearch extends Component {
             </div>
         )
     }
-
 }

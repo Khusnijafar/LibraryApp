@@ -4,12 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
-var mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/librarydb', { useNewUrlParser: true })
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 
 var indexRouter = require('./routes/index');
 var libraryRouter = require('./routes/library')
+var loanbookRouter = require('./routes/loanbook')
+var userRouter = require('./routes/userRoutes')
 
 var app = express();
 
@@ -17,15 +19,38 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+// set security http headers
+app.use(helmet())
+
+// Development logging
+if (process.env.NODE_ENV === 'development') {
+  app.use(logger('dev'));
+}
+
 app.use(express.json());
+
+// Data sanitization against NoSQL query injection
+app.use(mongoSanitize());
+
+// Data against XSS
+app.use(xss());
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString()
+  // console.log(req.headers);
+  next()
+})
+
+// Routes
 app.use('/', indexRouter);
 app.use('/api/library', libraryRouter)
+app.use('/api/loanbook', loanbookRouter)
+app.use('/api/user', userRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

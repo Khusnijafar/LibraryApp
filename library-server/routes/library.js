@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     }).catch(err => {
         res.json(err)
     })
-});
+}); 
 
 // Add Data
 router.post('/', (req, res) => {
@@ -76,6 +76,6 @@ router.delete('/:id', (req, res) => {
           message: err.message
       })
     })
-  })
+})
 
 module.exports = router

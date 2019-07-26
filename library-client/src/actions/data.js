@@ -2,6 +2,7 @@ import * as types from '../constants/ActionTypes'
 import request from 'superagent'
 
 const API_URL = 'http://localhost:3005/api/library'
+//const API_URL2 = 'http://localhost:3005/api/user/signup'
 
 function loadLibraryFailure() {
     return {type: types.LOAD_LIBRARIES_FAILURE}
@@ -21,6 +22,7 @@ export function loadLibrary() {
                 console.log(err)
                 dispatch(loadLibraryFailure())
             } else {
+           
                 dispatch(loadLibrarySuccess(res.body))
             }
         })
@@ -56,7 +58,7 @@ export function addLibrary(title, image, writer, category, location,) {
                     console.log(err);
                     dispatch(addLibraryFailure())
                 } else {
-                    dispatch(addLibrarySuccess(res.body.data))
+                    dispatch(addLibrarySuccess(res.body))
                 }
         })
     }
@@ -89,7 +91,7 @@ export function editLibrary(id, title, image, writer, category, location,) {
                 console.log(err);
                 dispatch(editLibraryFailure())
             } else {
-                dispatch(editLibrarySuccess(res.body.data))
+                dispatch(editLibrarySuccess(res.body))
             }
         })
     }
@@ -112,7 +114,6 @@ export function deleteLibrary(id) {
         dispatch(deleteData(id))
         return request
         .delete(`${API_URL}/${id}`)
-
         .end((err, res) => {
             if (err) {
                 console.log(err);
@@ -123,3 +124,7 @@ export function deleteLibrary(id) {
         })
     }
 }
+
+
+
+

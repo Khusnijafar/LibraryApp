@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import LibraryFormAdd from './LibraryFormAdd'
 import LibraryDataList from './LibraryDataList'
+import LibraryFormLoan from './LibraryFormLoan'
+import LibraryFormReturn from './LibraryFormReturn'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as LibraryActions from '../actions'
+import * as LibraryActions from '../actions/data'
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 
@@ -29,14 +31,21 @@ class Library extends Component {
         const { data, actions } = this.props
         return (
             <div>
-                <div className="container text-center">
-                    <h1>
-                        <font><b><i className="book icon"></i>Library</b></font>
-                    </h1>
+                <div className="ui clearing segment">
+                    <h3 className="ui right floated header">
+                       <a href="/register"> Register</a>
+                    </h3>
+                    <h3 className="ui left floated header">
+                    <a href="/login"> Login</a>
+                    </h3>
                 </div>
                 <Gallery />
                 <div style={{ height: '5px'}}><br /></div>
                 <LibraryFormAdd title="" image="" writer="" category="" location="" onSave={actions.addLibrary} />
+                <div style={{ height: '5px'}}><br /></div>
+                <LibraryFormLoan />
+                <div style={{ height: '5px'}}><br /></div>
+                <LibraryFormReturn />
                 <div style={{ height: '10px'}}><br /></div>
                 <LibraryDataList data={data} actions={actions} />
             </div>

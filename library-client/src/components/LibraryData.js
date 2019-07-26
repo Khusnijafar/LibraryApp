@@ -5,6 +5,7 @@ class LibraryData extends Component {
         super(props, context)
         this.state = {
             editing: false,
+            loaning: false,
             title: this.props.data.title,
             image: this.props.data.image,
             writer: this.props.data.writer,
@@ -25,7 +26,6 @@ class LibraryData extends Component {
         this.props.editLibrary(this.props.data.id,title,image,writer,category,location,)
         this.setState({ editing: false })
     }
-
     
     render() {
         const { data, deleteLibrary } = this.props
@@ -87,3 +87,5 @@ class LibraryData extends Component {
 }
 
 export default LibraryData
+
+
